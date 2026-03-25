@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Student Hub Marketing - The #1 campus marketplace to buy, sell, and connect safely with other students. Download the app today!">
+    <title>Student Hub Marketing | Buy & Sell on Campus</title>
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Modern Sans-Serif Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff6600;
+            --primary-hover: #e65c00;
+            --primary-light: #fff0e6;
+            --text-dark: #1f2937;
+            --text-muted: #4b5563;
+            --bg-body: #f9fafb;
+            --bg-card: #ffffff;
+            --border-color: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --border-radius-md: 12px;
+            --border-radius-lg: 24px;
+            --transition-speed: 0.3s;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+            border: none;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 14px rgba(255, 102, 0, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 102, 0, 0.4);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-light);
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 100px;
+            text-align: center;
+            background: linear-gradient(135deg, #ffffff 0%, #fff8f3 100%);
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(255,102,0,0.05) 0%, rgba(255,102,0,0) 70%);
+            z-index: 0;
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: var(--text-dark);
+            letter-spacing: -1px;
+        }
+        
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        /* Features Section */
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-header p {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            padding: 40px 32px;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            transition: all var(--transition-speed) ease;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: transparent;
+        }
+
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--primary-light);
+            color: var(--primary);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 24px;
+            transition: transform var(--transition-speed) ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1);
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            background-color: var(--bg-card);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .steps-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            position: relative;
+        }
+
+        .steps-container::before {
+            content: '';
+            position: absolute;
+            left: 32px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-light);
+            z-index: 0;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 32px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-number {
+            width: 64px;
+            height: 64px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            box-shadow: 0 0 0 8px var(--bg-card);
+        }
+
+        .step-content {
+            background: var(--bg-body);
+            padding: 32px;
+            border-radius: var(--border-radius-md);
+            border: 1px solid var(--border-color);
+            flex-grow: 1;
+        }
+
+        .step-content h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .step-content p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        /* Trust Section */
+        .trust-section {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .trust-section h2 {
+            font-size: 2.25rem;
+            margin-bottom: 24px;
+        }
+
+        .trust-section p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 48px;
+            flex-wrap: wrap;
+        }
+
+        .trust-badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .trust-badge-icon {
+            font-size: 2.5rem;
+        }
+
+        .trust-badge span {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Screenshots Section */
+        .screenshots-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+            margin-top: 48px;
+        }
+
+        .screenshot-mockup {
+            width: 250px;
+            height: 500px;
+            background: var(--bg-body);
+            border: 8px solid var(--text-dark);
+            border-radius: 32px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .screenshot-mockup::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 24px;
+            background: var(--text-dark);
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+        }
+
+        .screenshot-content {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .screenshot-caption {
+            text-align: center;
+            margin-top: 16px;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, #ff8c3a 100%);
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 24px;
+            letter-spacing: -0.5px;
+        }
+
+        .cta-section p {
+            font-size: 1.25rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .btn-white {
+            background-color: white;
+            color: var(--primary);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            font-size: 1.2rem;
+            padding: 16px 40px;
+        }
+
+        .btn-white:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-card);
+            padding: 64px 0 32px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 48px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col a {
+            color: var(--text-muted);
+            transition: color var(--transition-speed) ease;
+        }
+
+        .footer-col a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            .steps-container::before {
+                display: none;
+            }
+            .step {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+            .step-number {
+                margin: 0 auto;
+                box-shadow: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero {
+                padding: 120px 0 60px;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                padding: 0 20px;
+            }
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            .cta-section h2 {
+                font-size: 2.5rem;
+            }
+            .footer-content {
+                flex-direction: column;
+                gap: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <nav class="container">
+        <div class="logo">
+            <span class="logo-icon"></span>
+            Student Hub
+        </div>
+        <a href="#download" class="btn btn-primary">Get the App</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container hero-content">
+            <span class="badge">Version 2.0 Now Available</span>
+            <h1>Buy, sell, and connect with <span>students</span> on your campus</h1>
+            <p>The ultimate marketplace built exclusively for university students. Securely trade textbooks, furniture, and electronics with classmates.</p>
+            <div class="hero-buttons">
+                <a href="#download" class="btn btn-primary">Download on the App Store</a>
+                <a href="#how-it-works" class="btn btn-outline">See How It Works</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="section-padding" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Everything you need in one app</h2>
+                <p>Designed to make campus trading fast, secure, and incredibly simple.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🛍️</div>
+                    <h3>Buy & Sell Easily</h3>
+                    <p>Post a listing in under 30 seconds. Browse thousands of everyday student essentials at affordable prices.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>Real-time Chat</h3>
+                    <p>Instantly negotiate prices and arrange meetups securely through our built-in private messaging system.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📍</div>
+                    <h3>Campus-Based</h3>
+                    <p>Listings are tailored to your specific university, eliminating shipping costs and distant meetups.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔔</div>
+                    <h3>Instant Notifications</h3>
+                    <p>Never miss a deal. Get push alerts when someone messages you or when your saved items drop in price.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works section-padding" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>How It Works</h2>
+                <p>Start trading with your peers in three simple steps.</p>
+            </div>
+
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Sign up with your student email</h3>
+                        <p>We require an active .edu or university email to register. This ensures a secure, closed-community environment free from external scammers.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Browse or list items</h3>
+                        <p>Search for specific textbooks or snap a photo of that mini-fridge you no longer need. Add a title, price, and category to get started.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Chat and complete deals</h3>
+                        <p>Connect with interested buyers or sellers via chat. Agree on a price, meet up safely at the campus library or student union, and trade!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust-section">
+        <div class="container">
+            <h2>Your Safety is Our Priority</h2>
+            <p>We built Student Hub Marketing to solve the trust issues found on public marketplaces. By restricting access to verified students, we create a specialized, secure trading environment.</p>
+            
+            <div class="trust-badges">
+                <div class="trust-badge">
+                    <div class="trust-badge-icon">🎓</div>
+                    <span>Student-Only Authentication</span>
+                </div>
+                <div class="trust-badge">
+                    <div class="trust-badge-icon">🔒</div>
+                    <span>Secure In-App Chat</span>
+                </div>
+                <div class="trust-badge">
+                    <div class="trust-badge-icon">🛡️</div>
+                    <span>Active Moderation</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section class="section-padding" id="screenshots">
+        <div class="container">
+            <div class="section-header">
+                <h2>A beautiful experience</h2>
+                <p>A clean, intuitive interface designed specifically for mobile.</p>
+            </div>
+
+            <div class="screenshots-wrapper">
+                <div>
+                    <div class="screenshot-mockup">
+                        <div class="screenshot-content">App Home Screen<br><br>(Placeholder)</div>
+                    </div>
+                    <div class="screenshot-caption">Browse local listings</div>
+                </div>
+                <div>
+                    <div class="screenshot-mockup">
+                        <div class="screenshot-content">Item Details<br><br>(Placeholder)</div>
+                    </div>
+                    <div class="screenshot-caption">View high-res photos</div>
+                </div>
+                <div>
+                    <div class="screenshot-mockup">
+                        <div class="screenshot-content">Chat Interface<br><br>(Placeholder)</div>
+                    </div>
+                    <div class="screenshot-caption">Negotiate easily</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section" id="download">
+        <div class="container">
+            <h2>Ready to join the hub?</h2>
+            <p>Join thousands of students who are saving money and clearing out their dorms.</p>
+            <a href="#" class="btn btn-white">Download the App Today</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col" style="max-width: 300px;">
+                    <div class="logo">
+                        <span class="logo-icon"></span>
+                        Student Hub
+                    </div>
+                    <p style="margin-top: 16px; color: var(--text-muted); font-size: 0.95rem;">
+                        The safest and easiest way to buy and sell items exclusively within your university campus.
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="https://lekgalake.github.io/Student-Hub-Marketing-Support-Page/">Help Center / Support</a></li>
+                        <li><a href="mailto:support@studenthub.com">Email: support@studenthub.com</a></li>
+                        <li><a href="#">Safety Center</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="https://lekgalake.github.io/studenthub-legal">Terms of Service</a></li>
+                        <li><a href="https://lekgalake.github.io/studenthub-legal">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Student Hub Marketing. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple script for smooth scroll behavior on internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
